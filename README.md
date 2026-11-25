@@ -31,7 +31,12 @@ Download eopkg package from releases and install it with:
 ```bash
 sudo eopkg install new-lg4ff-*.eopkg
 ```
-Restart the system
+Reboot
+
+Check the module with 
+```bash
+lsmod | grep hid_logitech_new
+```
 
 ## Removing the package
 
