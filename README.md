@@ -27,16 +27,13 @@ All of this runs automatically through a **systemd oneshot service**
 
 ## Installation
 
-Download eopkg package from releases and install it with:
+1. Download eopkg package from releases and install it with:
 ```bash
 sudo eopkg install new-lg4ff-*.eopkg
 ```
-Reboot
+2. Reboot
 
-Check the module with 
-```bash
-lsmod | grep hid_logitech_new
-```
+3. Check the module with `lsmod | grep hid_logitech_new`
 
 ## Removing the package
 
