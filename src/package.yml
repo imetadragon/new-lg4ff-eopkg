@@ -1,0 +1,26 @@
+name       : new-lg4ff
+version    : 0.5.0
+release    : 1
+source     :
+    - git|https://github.com/berarma/new-lg4ff.git : 0.5.0
+homepage   : https://github.com/berarma/new-lg4ff
+license    : GPL-2.0-or-later
+component  : system.utils
+summary    : Self-contained auto-building Logitech force feedback driver
+description: |
+    Bundles the new-lg4ff source code locally and automatically compiles and loads the driver on every kernel update without external downloads.
+    Upstream source: https://github.com/berarma/new-lg4ff
+rundeps    :
+    - make
+    - gcc
+    - binutils
+    - linux-current-headers
+install    : |
+    install -dm00755 $installdir/usr/share/new-lg4ff/src
+    cp -a $workdir/. $installdir/usr/share/new-lg4ff/src/
+    rm -rf $installdir/usr/share/new-lg4ff/src/.git
+
+    install -Dm00755 $pkgfiles/check-new-lg4ff.sh $installdir/usr/bin/check-new-lg4ff.sh
+    install -Dm00644 $pkgfiles/new-lg4ff.conf $installdir/usr/lib64/modprobe.d/new-lg4ff.conf
+    install -Dm00644 $pkgfiles/auto-new-lg4ff.service $installdir/usr/lib64/systemd/system/auto-new-lg4ff.service
+    systemd_enable auto-new-lg4ff.service
