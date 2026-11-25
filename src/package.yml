@@ -1,8 +1,8 @@
 name       : new-lg4ff
 version    : 0.5.0
 release    : 1
-source     :
-    - git|https://github.com/berarma/new-lg4ff.git : 0.5.0
+source :
+    - git|https://github.com/berarma/new-lg4ff.git : v0.5.0
 homepage   : https://github.com/berarma/new-lg4ff
 license    : GPL-2.0-or-later
 component  : system.utils
@@ -23,4 +23,6 @@ install    : |
     install -Dm00755 $pkgfiles/check-new-lg4ff.sh $installdir/usr/bin/check-new-lg4ff.sh
     install -Dm00644 $pkgfiles/new-lg4ff.conf $installdir/usr/lib64/modprobe.d/new-lg4ff.conf
     install -Dm00644 $pkgfiles/auto-new-lg4ff.service $installdir/usr/lib64/systemd/system/auto-new-lg4ff.service
-    systemd_enable auto-new-lg4ff.service
+
+    install -dm00755 $installdir/usr/lib64/systemd/system/graphical.target.wants
+    ln -sf ../auto-new-lg4ff.service $installdir/usr/lib64/systemd/system/graphical.target.wants/auto-new-lg4ff.service
