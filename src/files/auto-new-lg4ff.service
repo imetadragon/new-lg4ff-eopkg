@@ -1,0 +1,15 @@
+[Unit]
+Description=Auto build and load new-lg4ff Logitech driver
+DefaultDependencies=no
+After=systemd-modules-load.service local-fs.target
+Before=graphical.target
+ConditionPathExists=/usr/bin/check-new-lg4ff.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/check-new-lg4ff.sh
+RemainAfterExit=yes
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target
