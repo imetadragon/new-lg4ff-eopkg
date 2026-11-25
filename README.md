@@ -31,6 +31,8 @@ Download eopkg package from releases and install it with:
 ```bash
 sudo eopkg install new-lg4ff-*.eopkg
 ```
+Restart the system
+
 ## Removing the package
 
 ```bash
